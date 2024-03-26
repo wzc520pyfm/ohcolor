@@ -2,9 +2,9 @@
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
-
-<!-- [![bundle][bundle-src]][bundle-href] -->
-<!-- [![Codecov][codecov-src]][codecov-href] -->
+[![bundle][bundle-src]][bundle-href]
+[![Codecov][codecov-src]][codecov-href]
+[![License][license-src]][license-href]
 
 🎨 ohcolor is a moden, expandable immutable color library.
 
@@ -29,7 +29,7 @@ bun install ohcolor
 Import:
 
 ```js
-import {mycolor} from "ohcolor";
+import { mycolor } from "ohcolor";
 // or
 import mycolor from "ohcolor";
 
