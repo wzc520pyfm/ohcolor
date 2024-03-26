@@ -1,19 +1,26 @@
 {
-  "name": "packageName",
-  "version": "0.0.0",
+  "name": "mycolor",
+  "version": "0.0.1",
   "description": "",
-  "repository": "unjs/packageName",
+  "repository": "wzc520pyfm/mycolor",
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.mjs"
+    },
+    "./plugin": {
+      "types": "./dist/plugin/index.d.ts",
+      "import": "./dist/plugin/index.mjs"
+    },
+    "./plugin/*": {
+      "types": "./dist/plugin/*/index.d.ts",
+      "import": "./dist/plugin/*/index.mjs"
     }
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
