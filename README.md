@@ -14,26 +14,26 @@ Install package:
 
 ```sh
 # npm
-npm install packageName
+npm install ohcolor
 
 # yarn
-yarn add packageName
+yarn add ohcolor
 
 # pnpm
-pnpm install packageName
+pnpm install ohcolor
 
 # bun
-bun install packageName
+bun install ohcolor
 ```
 
 Import:
 
 ```js
-// ESM
-import {} from "packageName";
+import {mycolor} from "ohcolor";
+// or
+import mycolor from "ohcolor";
 
-// CommonJS
-const {} = require("packageName");
+mycolor("#ff3399").rgba(); // [255, 51, 153, 1]
 ```
 
 ## Development
