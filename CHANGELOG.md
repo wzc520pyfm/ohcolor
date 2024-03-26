@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.4
+
+[compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.3...v0.0.4)
+
+### 🏡 Chore
+
+- **release:** V0.0.3 ([1fc954a](https://github.com/wzc520pyfm/ohcolor/commit/1fc954a))
+
+### ❤️ Contributors
+
+- Wzc520pyfm <1528857653@qq.com>
+
 ## v0.0.3
 
 [compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.2...v0.0.3)
