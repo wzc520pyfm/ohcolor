@@ -1,4 +1,4 @@
-# packageName
+# Ohcolor
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -46,7 +46,7 @@ mycolor("#ff3399").rgba(); // [255, 51, 153, 1]
 
 ## License
 
-Made with 💛
+Made with 💛 [@wzc520pyfm](https://github.com/wzc520pyfm)
 
 Published under [MIT License](./LICENSE).
 
