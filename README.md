@@ -6,7 +6,7 @@
 <!-- [![bundle][bundle-src]][bundle-href] -->
 <!-- [![Codecov][codecov-src]][codecov-href] -->
 
-This is my package description.
+🎨 ohcolor is a moden, expandable immutable color library.
 
 ## Usage
 
