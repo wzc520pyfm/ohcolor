@@ -1,3 +1,3 @@
-import { test } from "../src";
+import { mycolor } from "../src";
 
-console.log(test());
+console.log(mycolor());
