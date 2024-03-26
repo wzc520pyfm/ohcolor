@@ -1,9 +1,18 @@
 {
   "name": "ohcolor",
   "version": "0.0.2",
-  "description": "",
+  "description": "🎨 ohcolor is a moden, expandable immutable color library",
   "repository": "wzc520pyfm/ohcolor",
   "license": "MIT",
+  "keywords": [
+    "color",
+    "ohcolor",
+    "colorjs",
+    "mycolor",
+    "immutable",
+    "modern",
+    "expandable"
+  ],
   "sideEffects": false,
   "type": "module",
   "exports": {
