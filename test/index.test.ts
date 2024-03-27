@@ -34,4 +34,12 @@ describe("mycolor", () => {
     expect(mycolor("ff3399").rgba()).toEqual([255, 51, 153, 1]);
     expect(mycolor("ff339966").rgba()).toEqual([255, 51, 153, 0.4]);
   });
+  it("input w3cx11 color, should get a rgba array", () => {
+    expect(mycolor("pink").rgba()).toEqual([255, 192, 203, 1]);
+    expect(mycolor("orange").rgba()).toEqual([255, 165, 0, 1]);
+    expect(mycolor("yellow").rgba()).toEqual([255, 255, 0, 1]);
+    expect(mycolor("PINK").rgba()).toEqual([255, 192, 203, 1]);
+    expect(mycolor("ORANGE").rgba()).toEqual([255, 165, 0, 1]);
+    expect(mycolor("YELLOW").rgba()).toEqual([255, 255, 0, 1]);
+  });
 });

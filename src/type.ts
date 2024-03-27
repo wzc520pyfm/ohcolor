@@ -1,5 +1,3 @@
-// should recognize any named color from the W3CX11 specification and hexadecimal string, like #ff3399 and #F39
-export type ColorStr = "red" | "green" | "blue" | string;
 export type ColorHex = number; // should recognize hexadecimal numbers, only 0 ~ 16777215
 export type ColorSpace =
   | "rgb"

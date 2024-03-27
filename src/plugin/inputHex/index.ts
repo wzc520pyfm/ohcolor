@@ -1,16 +1,16 @@
-import type { MyColorCfg as OriginalColorCfg, MyColorPlugin } from "../..";
-import type { TColorRGBA } from "../../type";
+import type { MyColorCfg as OColorCfg, MyColorPlugin, InputColor as OInputColor } from "../..";
 
+type ColorHexString = string; // should recognize hexadecimal string, like #ff3399 and #F39
 interface ColorCfg {
-  color: string; // hex color
+  color: ColorHexString;
 }
 
-type MyColorCfg = OriginalColorCfg & ColorCfg;
+type MyColorCfg = OColorCfg & ColorCfg;
 
 const RE_HEX = /^#?([\dA-Fa-f]{6}|[\dA-Fa-f]{3})$/;
 const RE_HEXA = /^#?([\dA-Fa-f]{8}|[\dA-Fa-f]{4})$/;
 
-const parseColor = (cfg: MyColorCfg): TColorRGBA => {
+const parseColor = (cfg: MyColorCfg): OInputColor => {
   const { color } = cfg;
   let _hex: string | string[] = color;
 
@@ -73,5 +73,9 @@ export const inputHex: MyColorPlugin = (_, c) => {
     oldParse.bind(this)(newCfg);
   };
 };
+
+type InputColor = OInputColor | ColorHexString
+
+export type { ColorHexString, MyColorCfg, InputColor }
 
 export default inputHex;

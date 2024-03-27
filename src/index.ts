@@ -1,4 +1,5 @@
 import { inputHex } from "./plugin/inputHex";
+import { inputNamed } from "./plugin/inputNamed";
 import type { Alpha, RGB_B, RGB_G, RGB_R, TColorRGBA } from "./type";
 import U from "./utils";
 
@@ -35,7 +36,11 @@ const Utils = {
   w: wrapper,
 };
 
-const parseColor = (cfg: MyColorCfg): TColorRGBA => {
+type MaybeColorCfg = MyColorCfg & {
+  color: unknown;
+};
+
+const parseColor = (cfg: MaybeColorCfg): InputColor => {
   const { color } = cfg;
   if (
     Array.isArray(color) &&
@@ -59,10 +64,12 @@ const parseColor = (cfg: MyColorCfg): TColorRGBA => {
   return [0, 0, 0, 0]; // default
 };
 
+type InputColor = TColorRGBA;
+
 interface Config {}
 
 interface MyColorCfg {
-  color: TColorRGBA;
+  color: InputColor;
   args: [...MyColorCfg["color"], Config];
 }
 class MyColor {
@@ -115,8 +122,9 @@ mycolor.extend = (plugin: MyColorPluginFn, option?: any) => {
 
 // Install built-in plugins
 mycolor.extend(inputHex);
+mycolor.extend(inputNamed);
 
 export { mycolor, MyColor };
 export default mycolor;
 
-export type { MyColorCfg, MyColorPlugin };
+export type { MyColorCfg, InputColor, MyColorPlugin };
