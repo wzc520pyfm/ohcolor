@@ -23,6 +23,9 @@ describe("mycolor", () => {
   it("input rgba params, should get a rgba array", () => {
     expect(mycolor(255, 165, 0, 1).rgba()).toEqual([255, 165, 0, 1]);
   });
+});
+
+describe("mycolor built-in plugins", () => {
   it("input hex, should get a rgba array", () => {
     expect(mycolor("#ff3").rgba()).toEqual([255, 255, 51, 1]);
     expect(mycolor("#ff36").rgba()).toEqual([255, 255, 51, 0.4]);
