@@ -34,6 +34,44 @@ import { mycolor } from "ohcolor";
 import mycolor from "ohcolor";
 
 mycolor("#ff3399").rgba(); // [255, 51, 153, 1]
+mycolor("orange").rgba(); // [255, 165, 0, 1]
+```
+
+## Plugin
+
+A plugin is an independent module that can be added to Ohcolor to extend functionality or add new features.
+
+By default, Ohcolor comes with core code only and some core built-in plugins.
+
+You can load multiple plugins based on your need.
+
+### Customize
+
+You could build your own Ohcolor plugin to meet different needs.
+
+Feel free to open a pull request to share your plugin.
+
+Template of a Ohcolor plugin.
+
+```js
+export default (option, ohcolorClass, ohcolorFactory) => {
+  // extend ohcolor()
+  // e.g. add ohcolor().isSameOrBefore()
+  dayjsClass.prototype.isSameOrBefore = function(arguments) {}
+
+  // extend ohcolor
+  // e.g. add ohcolor.utc()
+  dayjsFactory.utc = arguments => {}
+
+  // overriding existing API
+  // e.g. extend ohcolor().format()
+  const oldFormat = dayjsClass.prototype.format
+  dayjsClass.prototype.format = function(arguments) {
+    // original format result
+    const result = oldFormat.bind(this)(arguments)
+    // return modified result
+  }
+}
 ```
 
 ## Development
@@ -61,12 +99,9 @@ Published under [MIT License](./LICENSE).
 [npm-version-href]: https://npmjs.com/package/ohcolor
 [npm-downloads-src]: https://img.shields.io/npm/dm/ohcolor?style=flat&colorA=18181B&colorB=F0DB4F
 [npm-downloads-href]: https://npmjs.com/package/ohcolor
-
 [codecov-src]: https://img.shields.io/codecov/c/gh/wzc520pyfm/ohcolor/main?style=flat&colorA=18181B&colorB=F0DB4F
 [codecov-href]: https://codecov.io/gh/wzc520pyfm/ohcolor
-
 [bundle-src]: https://img.shields.io/bundlephobia/minzip/ohcolor?style=flat&colorA=18181B&colorB=F0DB4F
 [bundle-href]: https://bundlephobia.com/result?p=ohcolor
-
 [license-src]: https://img.shields.io/github/license/wzc520pyfm/ohcolor?color=yellow
 [license-href]: https://github.com/wzc520pyfm/ohcolor/blob/main/LICENSE
