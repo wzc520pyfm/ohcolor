@@ -1,4 +1,8 @@
-import type { MyColorCfg as OColorCfg, MyColorPlugin, InputColor as OInputColor } from "../..";
+import type {
+  MyColorCfg as OColorCfg,
+  MyColorPlugin,
+  InputColor as OInputColor,
+} from "../..";
 
 type ColorHexString = string; // should recognize hexadecimal string, like #ff3399 and #F39
 interface ColorCfg {
@@ -74,8 +78,8 @@ export const inputHex: MyColorPlugin = (_, c) => {
   };
 };
 
-type InputColor = OInputColor | ColorHexString
+type InputColor = OInputColor | ColorHexString;
 
-export type { ColorHexString, MyColorCfg, InputColor }
+export type { ColorHexString, MyColorCfg, InputColor };
 
 export default inputHex;

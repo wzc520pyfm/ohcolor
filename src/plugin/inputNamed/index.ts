@@ -1,5 +1,8 @@
 import type { MyColorPlugin } from "../..";
-import type { InputColor as OInputColor, MyColorCfg as OColorCfg } from "../inputHex";
+import type {
+  InputColor as OInputColor,
+  MyColorCfg as OColorCfg,
+} from "../inputHex";
 import { w3cx11, type W3CX11 } from "./w3cx11";
 
 interface ColorCfg {
@@ -12,7 +15,9 @@ const parseColor = (cfg: MyColorCfg): OInputColor => {
   const { color } = cfg;
   const namedColor = color.toLowerCase() as W3CX11;
 
-  if (w3cx11[namedColor]) { return w3cx11[namedColor]; }
+  if (w3cx11[namedColor]) {
+    return w3cx11[namedColor];
+  }
 
   // parse failed, return original color
   return color;
@@ -33,9 +38,9 @@ export const inputNamed: MyColorPlugin = (_, c) => {
   };
 };
 
-type InputColor = OInputColor | W3CX11
+type InputColor = OInputColor | W3CX11;
 
-export type { MyColorCfg, InputColor }
+export type { MyColorCfg, InputColor };
 
 export default inputNamed;
 
