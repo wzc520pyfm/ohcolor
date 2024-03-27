@@ -13,7 +13,7 @@ type MyColorCfg = OColorCfg & ColorCfg;
 
 const parseColor = (cfg: MyColorCfg): OInputColor => {
   const { color } = cfg;
-  const namedColor = color.toLowerCase() as W3CX11;
+  const namedColor = color.toLowerCase?.() as W3CX11;
 
   if (w3cx11[namedColor]) {
     return w3cx11[namedColor];
