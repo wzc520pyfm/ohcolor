@@ -7,6 +7,10 @@ describe("mycolor", () => {
     const mycolor = await import("../src");
     expect(mycolor).toBeDefined();
   });
+  it("should get default rgba color", () => {
+    expect(mycolor().rgba()).toEqual([0, 0, 0, 0]);
+    expect(mycolor(-1, -1, -1, -1).rgba()).toEqual([0, 0, 0, 0]);
+  });
   it("should get mycolor by named", async () => {
     const { mycolor } = await import("../src");
     expect(mycolor).toBeDefined();
