@@ -1,6 +1,54 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.4...v0.0.5)
+
+### 🚀 Enhancements
+
+- **plugin:** Add input w3cx11 color ([8494138](https://github.com/wzc520pyfm/ohcolor/commit/8494138))
+- **input-named:** Add pre plugin ([18e733b](https://github.com/wzc520pyfm/ohcolor/commit/18e733b))
+- **plugin:** Add getLuminance ([34667ed](https://github.com/wzc520pyfm/ohcolor/commit/34667ed))
+- Add format func ([2808f13](https://github.com/wzc520pyfm/ohcolor/commit/2808f13))
+- Add alpha func ([bc5a686](https://github.com/wzc520pyfm/ohcolor/commit/bc5a686))
+- **plugin:** Add themeColors ([2a10973](https://github.com/wzc520pyfm/ohcolor/commit/2a10973))
+
+### 🩹 Fixes
+
+- **input-named:** Fix not string ([75766a6](https://github.com/wzc520pyfm/ohcolor/commit/75766a6))
+
+### 💅 Refactors
+
+- Update plugin type ([73bd59e](https://github.com/wzc520pyfm/ohcolor/commit/73bd59e))
+- Abstract color ([ccfa120](https://github.com/wzc520pyfm/ohcolor/commit/ccfa120))
+
+### 🏡 Chore
+
+- **release:** V0.0.4 ([8c65b42](https://github.com/wzc520pyfm/ohcolor/commit/8c65b42))
+- Update badges ([aae299d](https://github.com/wzc520pyfm/ohcolor/commit/aae299d))
+- Fix lint ([60997b6](https://github.com/wzc520pyfm/ohcolor/commit/60997b6))
+- **plugin:** Export inputNamed ([9fd8dba](https://github.com/wzc520pyfm/ohcolor/commit/9fd8dba))
+- Apply automated fixes ([4354b5a](https://github.com/wzc520pyfm/ohcolor/commit/4354b5a))
+- Add action badge & update mit badge ([e713b9b](https://github.com/wzc520pyfm/ohcolor/commit/e713b9b))
+- Add comment ([73e983d](https://github.com/wzc520pyfm/ohcolor/commit/73e983d))
+- Apply automated fixes ([4020bd0](https://github.com/wzc520pyfm/ohcolor/commit/4020bd0))
+- Apply automated fixes ([ed3d5fe](https://github.com/wzc520pyfm/ohcolor/commit/ed3d5fe))
+- Apply automated fixes ([d763ac0](https://github.com/wzc520pyfm/ohcolor/commit/d763ac0))
+
+### ✅ Tests
+
+- Add default value test ([d4fa095](https://github.com/wzc520pyfm/ohcolor/commit/d4fa095))
+- Update describe ([f83bd16](https://github.com/wzc520pyfm/ohcolor/commit/f83bd16))
+
+### 🤖 CI
+
+- Add codecov token ([cf85530](https://github.com/wzc520pyfm/ohcolor/commit/cf85530))
+
+### ❤️ Contributors
+
+- Wzc520pyfm <1528857653@qq.com>
+
 ## v0.0.4
 
 [compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.3...v0.0.4)
