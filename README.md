@@ -131,6 +131,36 @@ const mycolor2 = mycolor.extend(getLuminance)
 mycolor2("yellow").getLuminance() // 0.9278
 ```
 
+### themeColors
+
+Generate color shades for themes.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { themeColors } from 'ohcolor/plugin'
+
+const mycolor2 = mycolor.extend(themeColors)
+mycolor2("yellow").themeColors()
+```
+
+Will generate the following shades:
+
+```json
+{
+  "100": "#FFFFE6",
+  "200": "#FFFFBF",
+  "300": "#FFFF99",
+  "400": "#FFFF4D",
+  "50": "#FFFFF2",
+  "500": "#FFFF00",
+  "600": "#E6E600",
+  "700": "#999900",
+  "800": "#737300",
+  "900": "#4D4D00",
+  "950": "#333300",
+}
+```
+
 ## Development
 
 - Clone this repository
