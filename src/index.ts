@@ -1,6 +1,14 @@
 import { inputHex } from "./plugin/inputHex";
 import { inputNamed } from "./plugin/inputNamed";
-import type { Alpha, Format, FormatResult, RGB_B, RGB_G, RGB_R, TColorRGBA } from "./type";
+import type {
+  Alpha,
+  Format,
+  FormatResult,
+  RGB_B,
+  RGB_G,
+  RGB_R,
+  TColorRGBA,
+} from "./type";
 import U from "./utils";
 
 const IS_MYCOLOR = "$isMyColorObject";
@@ -99,10 +107,15 @@ class MyColor {
   public format<T extends Format = Format>(f: T): FormatResult[T] {
     switch (f) {
       case "object": {
-        return { r: this.r, g: this.g, b: this.b, a: this.a } as FormatResult[T];
+        return {
+          r: this.r,
+          g: this.g,
+          b: this.b,
+          a: this.a,
+        } as FormatResult[T];
       }
       case "array": {
-        return [this.r, this.g, this.b, this.a]  as FormatResult[T];
+        return [this.r, this.g, this.b, this.a] as FormatResult[T];
       }
       case "string": {
         return `rgba(${this.r},${this.g},${this.b},${this.a})` as FormatResult[T];
