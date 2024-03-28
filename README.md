@@ -36,7 +36,10 @@ import mycolor from "ohcolor";
 
 mycolor("#ff3399").rgba(); // [255, 51, 153, 1]
 mycolor("orange").rgba(); // [255, 165, 0, 1]
+mycolor("orange").format('string'); // rgba(255,165,0,1)
 ```
+
+All right, that's all ohcolor has to offer. It has simple functions and is small enough. But you can add plugins as needed to enrich ohcolor.
 
 ## Plugin
 
@@ -54,25 +57,77 @@ Feel free to open a pull request to share your plugin.
 
 Template of a Ohcolor plugin.
 
+```ts
+import type { MyColorPlugin, MyColor, MyColorFn } from "ohcolor";
+
+interface OhColorClass extends MyColor {
+  isSame(): number; // your custom function
+}
+
+interface OhColorFactory extends MyColorFn {
+  (...args: unknown[]): OhColorClass;
+  isSame(): number; // your other custom function
+}
+export const yourPlugin: MyColorPlugin<OhColorFactory> = (option, ohcolorClass, ohcolorFactory) => {
+  // extend ohcolor()
+  // e.g. add ohcolor().isSame()
+  const proto = ohcolorClass.prototype as OhColorClass;
+  proto.isSameOrBefore = function(arguments) {}
+
+  // extend ohcolor
+  // e.g. add ohcolor.isSame()
+  const _ohcolorFactory = ohcolorFactory as OhColorFactory
+  _ohcolorFactory.isSame = arguments => {}
+
+  // overriding existing API
+  // e.g. extend ohcolor().format()
+  const oldFormat = proto.format
+  proto.format = function(arguments) {
+    // original format result
+    const result = oldFormat.bind(this)(arguments)
+    // return modified result
+  }
+
+  // return factory
+  return _ohcolorFactory
+}
+```
+
+or use js:
+
 ```js
 export default (option, ohcolorClass, ohcolorFactory) => {
   // extend ohcolor()
   // e.g. add ohcolor().isSameOrBefore()
-  dayjsClass.prototype.isSameOrBefore = function(arguments) {}
+  ohcolorClass.prototype.isSameOrBefore = function(arguments) {}
 
   // extend ohcolor
   // e.g. add ohcolor.utc()
-  dayjsFactory.utc = arguments => {}
+  ohcolorFactory.utc = arguments => {}
 
   // overriding existing API
   // e.g. extend ohcolor().format()
-  const oldFormat = dayjsClass.prototype.format
-  dayjsClass.prototype.format = function(arguments) {
+  const oldFormat = ohcolorClass.prototype.format
+  ohcolorClass.prototype.format = function(arguments) {
     // original format result
     const result = oldFormat.bind(this)(arguments)
     // return modified result
   }
 }
+```
+
+## Plugins
+
+### getLuminance
+
+Returns a number (float) representing the luminance of a color.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { getLuminance } from 'ohcolor/plugin'
+
+const mycolor2 = mycolor.extend(getLuminance)
+mycolor2("yellow").getLuminance() // 0.9278
 ```
 
 ## Development
