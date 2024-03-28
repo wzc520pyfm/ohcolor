@@ -1,5 +1,5 @@
 import type {
-  MyColorCfg as OColorCfg,
+  Cfg as OColorCfg,
   MyColorPlugin,
   InputColor as OInputColor,
 } from "../..";
@@ -67,7 +67,7 @@ const parseColor = (cfg: MyColorCfg): OInputColor => {
   return color;
 };
 
-export const inputHex: MyColorPlugin = (_, c) => {
+export const inputHex: MyColorPlugin = (_, c, cf) => {
   const proto = c.prototype;
 
   const oldParse = proto.parse;
@@ -76,6 +76,8 @@ export const inputHex: MyColorPlugin = (_, c) => {
     const newCfg = { ...cfg, color };
     oldParse.bind(this)(newCfg);
   };
+
+  return cf;
 };
 
 type InputColor = OInputColor | ColorHexString;

@@ -40,6 +40,8 @@ export const inputNamed: MyColorPlugin = (_, c, mycolor) => {
     const newCfg = { ...cfg, color };
     oldParse.bind(this)(newCfg as OColorCfg);
   };
+
+  return mycolor;
 };
 
 type InputColor = OInputColor | W3CX11;

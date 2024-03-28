@@ -25,7 +25,7 @@ const mycolor = function (...args: unknown[]): MyColor {
     color,
     args,
   };
-  return new MyColor(cfg as MyColorCfg);
+  return new MyColor(cfg as Cfg);
 };
 
 const wrapper = (...args: unknown[]) => mycolor(...args);
@@ -36,11 +36,11 @@ const Utils = {
   w: wrapper,
 };
 
-type MaybeColorCfg = MyColorCfg & {
+type MaybeCfg = Cfg & {
   color: unknown;
 };
 
-const parseColor = (cfg: MaybeColorCfg): InputColor => {
+const parseColor = (cfg: MaybeCfg): InputColor => {
   const { color } = cfg;
   if (
     Array.isArray(color) &&
@@ -66,11 +66,11 @@ const parseColor = (cfg: MaybeColorCfg): InputColor => {
 
 type InputColor = TColorRGBA;
 
-interface Config {}
+interface Option {}
 
-interface MyColorCfg {
+interface Cfg {
   color: InputColor;
-  args: [...MyColorCfg["color"], Config];
+  args: [...Cfg["color"], Option];
 }
 class MyColor {
   private r: RGB_R = 0;
@@ -79,12 +79,12 @@ class MyColor {
   private a: Alpha = 0;
   public [IS_MYCOLOR] = false;
 
-  constructor(cfg: MyColorCfg) {
+  constructor(cfg: Cfg) {
     this.parse(cfg); // for plugin
     this[IS_MYCOLOR] = true;
   }
 
-  public parse(cfg: MyColorCfg) {
+  public parse(cfg: Cfg) {
     const [r, g, b, a] = parseColor(cfg);
     this.r = r;
     this.g = g;
@@ -101,30 +101,34 @@ class MyColor {
   }
 }
 
-interface MyColorPlugin {
+interface MyColorPlugin<T = MyColorFn> {
   (
     option: any,
     mycolorClass: typeof MyColor,
     mycolorFactory: typeof mycolor,
-  ): void;
+  ): T;
 }
-interface MyColorPluginFn extends MyColorPlugin {
+interface MyColorPluginFn<T> extends MyColorPlugin<T> {
   $i?: boolean;
 }
-mycolor.extend = (plugin: MyColorPluginFn, option?: any) => {
+mycolor.extend = <T>(plugin: MyColorPluginFn<T>, option?: any) => {
   if (!plugin.$i) {
     // install plugin only once
-    plugin(option, MyColor, mycolor);
+    const newMycolor = plugin(option, MyColor, mycolor);
     plugin.$i = true;
+    return newMycolor;
   }
-  return mycolor;
+  // this plugin has been installed
+  return mycolor as T;
 };
 
 // Install built-in plugins
 mycolor.extend(inputHex);
 mycolor.extend(inputNamed);
 
+type MyColorFn = typeof mycolor;
+
 export { mycolor, MyColor };
 export default mycolor;
 
-export type { MyColorCfg, InputColor, MyColorPlugin };
+export type { Cfg, InputColor, MyColorFn, MyColorPlugin };
