@@ -30,7 +30,7 @@ export const themeColors: MyColorPlugin<OhColorFactory> = (_, c, cf) => {
   const proto = c.prototype as OhColorClass;
   const getRGB = proto.rgba;
   proto.themeColors = function (variants = _variants) {
-    const [r,g,b] = getRGB.bind(this)();
+    const [r, g, b] = getRGB.bind(this)();
     const colors: Record<string, string> = {};
     const components = parseColor(`${r},${g},${b}`);
 
