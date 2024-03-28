@@ -36,6 +36,7 @@ import mycolor from "ohcolor";
 
 mycolor("#ff3399").rgba(); // [255, 51, 153, 1]
 mycolor("orange").rgba(); // [255, 165, 0, 1]
+mycolor("orange").alpha(0.5).rgba(); // [255, 165, 0, 0.5]
 mycolor("orange").format('string'); // rgba(255,165,0,1)
 ```
 

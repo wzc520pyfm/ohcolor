@@ -88,6 +88,7 @@ abstract class Color {
 
 interface RGBAColor {
   rgba(): TColorRGBA;
+  alpha(a: Alpha): Color;
 }
 class MyColor extends Color implements RGBAColor {
   private r: RGB_R = 0;
@@ -114,6 +115,10 @@ class MyColor extends Color implements RGBAColor {
 
   public rgba(): TColorRGBA {
     return [this.r, this.g, this.b, this.a];
+  }
+
+  public alpha(a: Alpha): MyColor {
+    return Utils.w(this.r, this.g, this.b, a);
   }
 
   public format<T extends Format = Format>(f: T): FormatResult[T] {
