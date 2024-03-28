@@ -80,7 +80,16 @@ interface Cfg {
   color: InputColor;
   args: [...Cfg["color"], Option];
 }
-class MyColor {
+
+abstract class Color {
+  abstract parse(cfg: Cfg): void;
+  abstract clone(): Color;
+}
+
+interface RGBAColor {
+  rgba(): TColorRGBA;
+}
+class MyColor extends Color implements RGBAColor {
   private r: RGB_R = 0;
   private g: RGB_G = 0;
   private b: RGB_B = 0;
@@ -88,10 +97,13 @@ class MyColor {
   public [IS_MYCOLOR] = false;
 
   constructor(cfg: Cfg) {
+    super();
     this.parse(cfg); // for plugin
     this[IS_MYCOLOR] = true;
   }
 
+  // for plugin, need to be public
+  /** @internal */
   public parse(cfg: Cfg) {
     const [r, g, b, a] = parseColor(cfg);
     this.r = r;
