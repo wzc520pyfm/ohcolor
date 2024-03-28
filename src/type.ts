@@ -10,6 +10,18 @@ export type ColorSpace =
   | "lch"
   | "hex"
   | "keyword";
+export type Format = "object" | "array" | "string";
+export type FormatResult = {
+  [key in Format]: key extends "object"
+    ? ColorRGBA
+    : key extends "array"
+      ? TColorRGBA
+      : key extends "string"
+        ? string
+        : never;
+};
+
+// TODO: Prepare to support more color
 export type ColorNum = number; // should recognize any color space number
 export type RGB_R = number; // should recognize red channel, only 0 ~ 255
 export type RGB_G = number; // should recognize green channel, only 0 ~ 255

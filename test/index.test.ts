@@ -23,6 +23,18 @@ describe("mycolor", () => {
   it("input rgba params, should get a rgba array", () => {
     expect(mycolor(255, 165, 0, 1).rgba()).toEqual([255, 165, 0, 1]);
   });
+  it("format color", () => {
+    expect(mycolor(255, 165, 0, 1).format("array")).toEqual([255, 165, 0, 1]);
+    expect(mycolor(255, 165, 0, 1).format("object")).toEqual({
+      r: 255,
+      g: 165,
+      b: 0,
+      a: 1,
+    });
+    expect(mycolor(255, 165, 0, 1).format("string")).toEqual(
+      "rgba(255,165,0,1)",
+    );
+  });
   it("allows multiple plugins to be installed", async () => {
     const { inputHex, getLuminance } = await import("../src/plugin");
     const mycolor2 = mycolor.extend(inputHex).extend(getLuminance);
