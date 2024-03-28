@@ -25,7 +25,7 @@ const parseColor = (cfg: MyColorCfg): OInputColor => {
 };
 
 /**
- * Named color plugin, support w3cx11 color
+ * Plugin: support parsing w3cx11 color
  * @note will install inputHex plugin at the same time
  */
 export const inputNamed: MyColorPlugin = (_, c, mycolor) => {

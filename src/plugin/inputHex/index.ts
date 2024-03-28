@@ -67,6 +67,9 @@ const parseColor = (cfg: MyColorCfg): OInputColor => {
   return color;
 };
 
+/**
+ * Plugin: support parsing hexadecimal color string
+ */
 export const inputHex: MyColorPlugin = (_, c, cf) => {
   const proto = c.prototype;
 

@@ -16,7 +16,7 @@ const f = (x: number) => {
 };
 
 /**
- * Returns a number (float) representing the luminance of a color.
+ * Plugin: returns a number (float) representing the luminance of a color.
  */
 export const getLuminance: MyColorPlugin<OhColorFactory> = (_, c, cf) => {
   const proto = c.prototype as OhColorClass;
