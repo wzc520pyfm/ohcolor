@@ -27,7 +27,7 @@ describe("mycolor", () => {
     const { inputHex, getLuminance } = await import("../src/plugin");
     const mycolor2 = mycolor.extend(inputHex).extend(getLuminance);
     expect(mycolor2("red").getLuminance()).toBe(0.2126);
-  })
+  });
 });
 
 describe("mycolor built-in plugins", () => {
