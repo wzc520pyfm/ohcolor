@@ -24,7 +24,9 @@ describe("mycolor", () => {
     expect(mycolor(255, 165, 0, 1).rgba()).toEqual([255, 165, 0, 1]);
   });
   it("input rgba params, set alpha", () => {
-    expect(mycolor(255, 165, 0, 1).alpha(0.5).rgba()).toEqual([255, 165, 0, 0.5]);
+    expect(mycolor(255, 165, 0, 1).alpha(0.5).rgba()).toEqual([
+      255, 165, 0, 0.5,
+    ]);
   });
   it("format color", () => {
     expect(mycolor(255, 165, 0, 1).format("array")).toEqual([255, 165, 0, 1]);
