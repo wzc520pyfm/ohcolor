@@ -190,7 +190,7 @@ Published under [MIT License](./LICENSE).
 [codecov-href]: https://codecov.io/gh/wzc520pyfm/ohcolor
 [bundle-src]: https://img.shields.io/bundlephobia/minzip/ohcolor?style=flat&colorA=18181B&colorB=F0DB4F
 [bundle-href]: https://bundlephobia.com/result?p=ohcolor
-[github-actions-src]: https://img.shields.io/github/actions/workflow/status/wzc520pyfm/ohcolor/ci.yml?branch=main&style=flat-square&colorA=18181B&colorB=F0DB4F
+[github-actions-src]: https://img.shields.io/github/actions/workflow/status/wzc520pyfm/ohcolor/ci.yml?branch=main&style=flat&colorA=18181B&colorB=F0DB4F
 [github-actions-href]: https://github.com/wzc520pyfm/ohcolor/actions?query=workflow%3Aci
 [license-src]: https://img.shields.io/github/license/wzc520pyfm/ohcolor?style=flat&colorA=18181B&colorB=F0DB4F
 [license-href]: https://github.com/wzc520pyfm/ohcolor/blob/main/LICENSE
