@@ -12,4 +12,7 @@ describe("mycolor plugin: inputNamed", () => {
     expect(mycolor2("ORANGE").rgba()).toEqual([255, 165, 0, 1]);
     expect(mycolor2("YELLOW").rgba()).toEqual([255, 255, 0, 1]);
   });
+  it("input hex string, should get a rgba array", () => {
+    expect(mycolor2("#ff00ff").rgba()).toEqual([255, 0, 255, 1]);
+  })
 });
