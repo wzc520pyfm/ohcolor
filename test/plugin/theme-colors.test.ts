@@ -20,8 +20,8 @@ describe("mycolor plugin: themeColors", () => {
     },
   };
   it("input hex string, get theme", () => {
-    const mycolor2 = mycolor.extend(themeColors);
+    mycolor.extend(themeColors);
 
-    expect(mycolor2(fixture.hex).themeColors()).toMatchObject(fixture.theme);
+    expect(mycolor(fixture.hex).themeColors()).toMatchObject(fixture.theme);
   });
 });

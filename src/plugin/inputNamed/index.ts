@@ -1,10 +1,10 @@
-import type { MyColorPlugin } from "../..";
 import {
   type InputColor as OInputColor,
   type MyColorCfg as OColorCfg,
   inputHex,
 } from "../inputHex";
 import { w3cx11, type W3CX11 } from "./w3cx11";
+import type { ColorPlugin } from "ohcolor";
 
 interface ColorCfg {
   color: W3CX11; // hex color
@@ -28,7 +28,7 @@ const parseColor = (cfg: MyColorCfg): OInputColor => {
  * Plugin: support parsing w3cx11 color
  * @note will install inputHex plugin at the same time
  */
-export const inputNamed: MyColorPlugin = (_, c, mycolor) => {
+export const inputNamed: ColorPlugin = (_, c, mycolor) => {
   // Install dependent plugins
   mycolor.extend(inputHex);
 

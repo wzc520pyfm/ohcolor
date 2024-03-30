@@ -1,19 +1,19 @@
 import { expect, it, describe } from "vitest";
 // eslint-disable-next-line import/no-named-as-default
-import mycolor from "../src";
+import mycolor from "ohcolor";
 
 describe("mycolor", () => {
   it("should get mycolor by default", async () => {
-    const mycolor = await import("../src");
-    expect(mycolor).toBeDefined();
+    const mycolor2 = await import("../src");
+    expect(mycolor2).toBeDefined();
   });
   it("should get default rgba color", () => {
     expect(mycolor().rgba()).toEqual([0, 0, 0, 0]);
     expect(mycolor(-1, -1, -1, -1).rgba()).toEqual([0, 0, 0, 0]);
   });
   it("should get mycolor by named", async () => {
-    const { mycolor } = await import("../src");
-    expect(mycolor).toBeDefined();
+    const { mycolor: mycolor3 } = await import("../src");
+    expect(mycolor3).toBeDefined();
   });
   it("should get a new mycolor instance", () => {
     const color1 = mycolor(255, 165, 0, 1);
@@ -41,9 +41,14 @@ describe("mycolor", () => {
     );
   });
   it("allows multiple plugins to be installed", async () => {
-    const { inputHex, getLuminance } = await import("../src/plugin");
-    const mycolor2 = mycolor.extend(inputHex).extend(getLuminance);
-    expect(mycolor2("#ff0000").getLuminance()).toBe(0.2126);
+    const { inputHex, getLuminance, readableColor } = await import(
+      "../src/plugin"
+    );
+    mycolor.extend(inputHex);
+    mycolor.extend(getLuminance);
+    mycolor.extend(readableColor);
+    expect(mycolor("#ff0000").getLuminance()).toBe(0.2126);
+    expect(mycolor("#ff0000").readableColor()).toBe("#000");
   });
 });
 

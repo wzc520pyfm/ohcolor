@@ -6,6 +6,10 @@
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
+    "paths": {
+      "ohcolor": ["./src/index.ts"]
+    },
+    "baseUrl": "."
   },
-  "include": ["src"],
+  "include": ["src", "test", "playground"],
 }

@@ -161,25 +161,22 @@ class RGBAColor<CS extends Extract<ColorSpace, "rgb"> = "rgb">
   }
 }
 
-interface MyColorPlugin<T = MyColorFn> {
+interface ColorPlugin<T = unknown> {
   (
-    option: any,
+    option: T | undefined,
     mycolorClass: typeof RGBAColor,
     mycolorFactory: typeof mycolor,
-  ): T;
+  ): void;
 }
-interface MyColorPluginFn<T> extends MyColorPlugin<T> {
+interface ColorPluginFn<T = unknown> extends ColorPlugin<T> {
   $i?: boolean;
 }
-mycolor.extend = <T>(plugin: MyColorPluginFn<T>, option?: any) => {
+mycolor.extend = <T = unknown>(plugin: ColorPluginFn<T>, option?: T) => {
   if (!plugin.$i) {
     // install plugin only once
-    const newMycolor = plugin(option, RGBAColor, mycolor);
+    plugin(option, RGBAColor, mycolor);
     plugin.$i = true;
-    return newMycolor;
   }
-  // this plugin has been installed
-  return mycolor as T;
 };
 
 // Install built-in plugins
@@ -193,4 +190,4 @@ export {
 };
 export default mycolor;
 
-export type { Cfg, InputColor, MyColorFn, MyColorPlugin };
+export type { Cfg, InputColor, MyColorFn, ColorPlugin };

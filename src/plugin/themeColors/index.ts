@@ -1,13 +1,6 @@
-import type { MyColorPlugin, MyColor, MyColorFn } from "../..";
 import { withTint, withShade, parseColor, hexValue } from "./util";
-
-interface OhColorClass extends MyColor {
-  themeColors: () => Record<string, string>;
-}
-
-interface OhColorFactory extends MyColorFn {
-  (...args: unknown[]): OhColorClass;
-}
+import type { ColorPlugin } from "ohcolor";
+import "./type.d.ts";
 
 export const _variants = {
   50: withTint(0.95),
@@ -26,8 +19,8 @@ export const _variants = {
 /**
  * Plugin: returns a number (float) representing the luminance of a color.
  */
-export const themeColors: MyColorPlugin<OhColorFactory> = (_, c, cf) => {
-  const proto = c.prototype as OhColorClass;
+export const themeColors: ColorPlugin = (_, c, cf) => {
+  const proto = c.prototype;
   const getRGB = proto.rgba;
   proto.themeColors = function (variants = _variants) {
     const [r, g, b] = getRGB.bind(this)();
@@ -41,7 +34,7 @@ export const themeColors: MyColorPlugin<OhColorFactory> = (_, c, cf) => {
     return colors;
   };
 
-  return cf as OhColorFactory;
+  return cf;
 };
 
 export default themeColors;

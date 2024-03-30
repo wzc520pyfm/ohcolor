@@ -4,8 +4,8 @@ import { getLuminance } from "../../src/plugin";
 
 describe("mycolor plugin: getLuminance", () => {
   it("should get luminance", () => {
-    const mycolor2 = mycolor.extend(getLuminance);
+    mycolor.extend(getLuminance);
 
-    expect(mycolor2(255, 255, 0, 1).getLuminance()).toBe(0.9278);
+    expect(mycolor(255, 255, 0, 1).getLuminance()).toBe(0.9278);
   });
 });

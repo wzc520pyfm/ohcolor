@@ -1,9 +1,9 @@
+import { ColorHexString } from "../../type";
 import type {
   Cfg as OColorCfg,
-  MyColorPlugin,
+  ColorPlugin,
   InputColor as OInputColor,
-} from "../..";
-import { ColorHexString } from "../../type";
+} from "ohcolor";
 
 interface ColorCfg {
   color: ColorHexString;
@@ -70,7 +70,7 @@ const parseColor = (cfg: MyColorCfg): OInputColor => {
 /**
  * Plugin: support parsing hexadecimal color string
  */
-export const inputHex: MyColorPlugin = (_, c, cf) => {
+export const inputHex: ColorPlugin = (_, c, cf) => {
   const proto = c.prototype;
 
   const oldParse = proto.parse;

@@ -1,12 +1,5 @@
-import type { MyColorPlugin, MyColor, MyColorFn } from "../..";
-
-interface OhColorClass extends MyColor {
-  getLuminance: () => number;
-}
-
-interface OhColorFactory extends MyColorFn {
-  (...args: unknown[]): OhColorClass;
-}
+import type { ColorPlugin } from "ohcolor";
+import "./type.d.ts";
 
 const f = (x: number) => {
   const channel = x / 255;
@@ -18,15 +11,15 @@ const f = (x: number) => {
 /**
  * Plugin: returns a number (float) representing the luminance of a color.
  */
-export const getLuminance: MyColorPlugin<OhColorFactory> = (_, c, cf) => {
-  const proto = c.prototype as OhColorClass;
+export const getLuminance: ColorPlugin = (_, c, cf) => {
+  const proto = c.prototype;
   const getRGB = proto.rgba;
   proto.getLuminance = function () {
     const [r, g, b] = getRGB.bind(this)();
     return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
   };
 
-  return cf as OhColorFactory;
+  return cf;
 };
 
 export default getLuminance;
