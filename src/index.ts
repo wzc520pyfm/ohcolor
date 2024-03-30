@@ -2,6 +2,7 @@ import { inputHex } from "./plugin/inputHex";
 import { inputNamed } from "./plugin/inputNamed";
 import type {
   Alpha,
+  ColorSpace,
   Format,
   FormatResult,
   RGB_B,
@@ -13,13 +14,15 @@ import U from "./utils";
 
 const IS_MYCOLOR = "$isMyColorObject";
 
-const isMyColor = (c: any) => c instanceof MyColor || !!(c && c[IS_MYCOLOR]);
+const isMyColor = (c: any) => c instanceof Color || !!(c && c[IS_MYCOLOR]);
 
 // Only r,g,b,a params is supported by default, unless you use a plugin
-const mycolor = function (...args: unknown[]): MyColor {
+const mycolor = function <CS extends Extract<ColorSpace, "rgb"> = "rgb">(
+  ...args: unknown[]
+): RGBAColor {
   // Immutable data, return the cloned value.
   if (isMyColor(args[0])) {
-    return (args[0] as MyColor).clone();
+    return (args[0] as RGBAColor).clone();
   }
 
   // Promise: If there are multiple parameters and the last parameter is an object, the last parameter is config
@@ -33,22 +36,23 @@ const mycolor = function (...args: unknown[]): MyColor {
     color,
     args,
   };
-  return new MyColor(cfg as Cfg);
+  return new RGBAColor(cfg as Cfg<CS>);
 };
 
 const wrapper = (...args: unknown[]) => mycolor(...args);
 
 const Utils = {
-  ...U,
-  i: isMyColor,
+  n: U.n,
   w: wrapper,
 };
 
-type MaybeCfg = Cfg & {
+type MaybeCfg<CS extends ColorSpace = "rgb"> = Cfg<CS> & {
   color: unknown;
 };
 
-const parseColor = (cfg: MaybeCfg): InputColor => {
+const parseColor = <CS extends Extract<ColorSpace, "rgb"> = "rgb">(
+  cfg: MaybeCfg<CS>,
+): InputColor<CS> => {
   const { color } = cfg;
   if (
     Array.isArray(color) &&
@@ -66,38 +70,48 @@ const parseColor = (cfg: MaybeCfg): InputColor => {
       a >= 0 &&
       a <= 1
     ) {
-      return [r, g, b, a]; // rgba
+      return [r, g, b, a] as InputColor<CS>; // rgba
     }
   }
-  return [0, 0, 0, 0]; // default
+  return [0, 0, 0, 0] as InputColor<CS>; // default
 };
 
-type InputColor = TColorRGBA;
+type InputColor<CS extends ColorSpace = "rgb"> = CS extends "rgb"
+  ? TColorRGBA
+  : never;
 
-interface Option {}
-
-interface Cfg {
-  color: InputColor;
-  args: [...Cfg["color"], Option];
+interface Option {
+  cs?: ColorSpace;
 }
 
-abstract class Color {
-  abstract parse(cfg: Cfg): void;
-  abstract clone(): Color;
+interface Cfg<CS extends ColorSpace = "rgb"> {
+  color: InputColor<CS>;
+  args?: [...Cfg<CS>["color"], Option];
 }
 
-interface RGBAColor {
+abstract class Color<CS extends ColorSpace> {
+  abstract [IS_MYCOLOR]: boolean;
+  abstract parse(cfg: Cfg<CS>): void;
+  abstract clone(): Color<CS>;
+  abstract format<T extends Format = Format>(f: T): FormatResult<CS>[T];
+}
+
+interface RGBA<CS extends Extract<ColorSpace, "rgb"> = "rgb"> {
   rgba(): TColorRGBA;
-  alpha(a: Alpha): Color;
+  alpha(a: Alpha): Color<CS>;
 }
-class MyColor extends Color implements RGBAColor {
+
+class RGBAColor<CS extends Extract<ColorSpace, "rgb"> = "rgb">
+  extends Color<CS>
+  implements RGBA
+{
   private r: RGB_R = 0;
   private g: RGB_G = 0;
   private b: RGB_B = 0;
   private a: Alpha = 0;
   public [IS_MYCOLOR] = false;
 
-  constructor(cfg: Cfg) {
+  constructor(cfg: Cfg<CS>) {
     super();
     this.parse(cfg); // for plugin
     this[IS_MYCOLOR] = true;
@@ -105,7 +119,7 @@ class MyColor extends Color implements RGBAColor {
 
   // for plugin, need to be public
   /** @internal */
-  public parse(cfg: Cfg) {
+  parse(cfg: Cfg<CS>): void {
     const [r, g, b, a] = parseColor(cfg);
     this.r = r;
     this.g = g;
@@ -113,15 +127,11 @@ class MyColor extends Color implements RGBAColor {
     this.a = a;
   }
 
-  public rgba(): TColorRGBA {
-    return [this.r, this.g, this.b, this.a];
+  clone(): RGBAColor {
+    return Utils.w(this.r, this.g, this.b, this.a);
   }
 
-  public alpha(a: Alpha): MyColor {
-    return Utils.w(this.r, this.g, this.b, a);
-  }
-
-  public format<T extends Format = Format>(f: T): FormatResult[T] {
+  format<T extends Format = Format, R = FormatResult<CS>[T]>(f: T): R {
     switch (f) {
       case "object": {
         return {
@@ -129,29 +139,33 @@ class MyColor extends Color implements RGBAColor {
           g: this.g,
           b: this.b,
           a: this.a,
-        } as FormatResult[T];
+        } as R;
       }
       case "array": {
-        return [this.r, this.g, this.b, this.a] as FormatResult[T];
+        return [this.r, this.g, this.b, this.a] as R;
       }
       case "string": {
-        return `rgba(${this.r},${this.g},${this.b},${this.a})` as FormatResult[T];
+        return `rgba(${this.r},${this.g},${this.b},${this.a})` as R;
       }
       default: {
-        return [this.r, this.g, this.b, this.a] as FormatResult[T];
+        return [this.r, this.g, this.b, this.a] as R;
       }
     }
   }
 
-  public clone() {
-    return Utils.w(this.r, this.g, this.b, this.a);
+  rgba(): TColorRGBA {
+    return [this.r, this.g, this.b, this.a];
+  }
+
+  alpha(a: number): RGBAColor<CS> {
+    return Utils.w(this.r, this.g, this.b, a);
   }
 }
 
 interface MyColorPlugin<T = MyColorFn> {
   (
     option: any,
-    mycolorClass: typeof MyColor,
+    mycolorClass: typeof RGBAColor,
     mycolorFactory: typeof mycolor,
   ): T;
 }
@@ -161,7 +175,7 @@ interface MyColorPluginFn<T> extends MyColorPlugin<T> {
 mycolor.extend = <T>(plugin: MyColorPluginFn<T>, option?: any) => {
   if (!plugin.$i) {
     // install plugin only once
-    const newMycolor = plugin(option, MyColor, mycolor);
+    const newMycolor = plugin(option, RGBAColor, mycolor);
     plugin.$i = true;
     return newMycolor;
   }
@@ -175,7 +189,10 @@ mycolor.extend(inputNamed);
 
 type MyColorFn = typeof mycolor;
 
-export { mycolor, MyColor };
+export {
+  mycolor,
+  RGBAColor as MyColor, // MyColor supports RGBA by default
+};
 export default mycolor;
 
 export type { Cfg, InputColor, MyColorFn, MyColorPlugin };

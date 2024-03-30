@@ -1,6 +1,5 @@
-export type ColorHex = number; // should recognize hexadecimal numbers, only 0 ~ 16777215
 export type ColorSpace =
-  | "rgb"
+  | "rgb" // maybe should changed to "rgba" ?
   | "hsl"
   | "hsv"
   | "hwb"
@@ -11,18 +10,24 @@ export type ColorSpace =
   | "hex"
   | "keyword";
 export type Format = "object" | "array" | "string";
-export type FormatResult = {
+export type FormatResult<T extends ColorSpace> = {
   [key in Format]: key extends "object"
-    ? ColorRGBA
+    ? ColorObject<T>
     : key extends "array"
-      ? TColorRGBA
+      ? ColorArray<T>
       : key extends "string"
-        ? string
+        ? ColorString<T>
         : never;
 };
-
-// TODO: Prepare to support more color
-export type ColorNum = number; // should recognize any color space number
+export type ColorObject<T extends ColorSpace> = T extends "rgb"
+  ? ColorRGBA
+  : never;
+export type ColorArray<T extends ColorSpace> = T extends "rgb"
+  ? TColorRGBA
+  : never;
+export type ColorString<T extends ColorSpace> = T extends "rgb"
+  ? StringColorRGBA
+  : never;
 export type RGB_R = number; // should recognize red channel, only 0 ~ 255
 export type RGB_G = number; // should recognize green channel, only 0 ~ 255
 export type RGB_B = number; // should recognize blue channel, only 0 ~ 255
@@ -31,6 +36,12 @@ export type TColorRGB = [RGB_R, RGB_G, RGB_B]; // should recognize an array of t
 export type TColorRGBA = [RGB_R, RGB_G, RGB_B, Alpha]; // should recognize an array of three numbers
 export type ColorRGB = { r: RGB_R; g: RGB_G; b: RGB_B }; // should recognize an object with three properties, each property is 0 ~ 255
 export type ColorRGBA = { r: RGB_R; g: RGB_G; b: RGB_B; a: Alpha }; // should recognize an object with three properties
+export type StringColorRGB = string; // should recognize a css string with rgba format
+export type StringColorRGBA = string; // should recognize a css string with rgba format
+
+// TODO: Prepare to support more color
+export type ColorHex = number; // should recognize hexadecimal numbers, only 0 ~ 16777215
+export type ColorNum = number; // should recognize any color space number
 export type HSL_H = number; // should recognize hue channel, only 0 ~ 360
 export type HSL_S = number; // should recognize saturation channel, only 0 ~ 100
 export type HSL_L = number; // should recognize lightness channel, only 0 ~ 100
