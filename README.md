@@ -130,8 +130,8 @@ Support input w3cx11 color.
 import { mycolor } from 'ohcolor'
 import { inputNamed } from 'ohcolor/plugin'
 
-const mycolor2 = mycolor.extend(inputNamed)
-mycolor2("yellow").rgba() // [255, 255, 0, 1]
+mycolor.extend(inputNamed)
+mycolor("yellow").rgba() // [255, 255, 0, 1]
 ```
 
 ### getLuminance
@@ -142,8 +142,8 @@ Returns a number (float) representing the luminance of a color.
 import { mycolor } from 'ohcolor'
 import { getLuminance } from 'ohcolor/plugin'
 
-const mycolor2 = mycolor.extend(getLuminance)
-mycolor2("yellow").getLuminance() // 0.9278
+mycolor.extend(getLuminance)
+mycolor("yellow").getLuminance() // 0.9278
 ```
 
 ### themeColors
@@ -154,8 +154,8 @@ Generate color shades for themes.
 import { mycolor } from 'ohcolor'
 import { themeColors } from 'ohcolor/plugin'
 
-const mycolor2 = mycolor.extend(themeColors)
-mycolor2("yellow").themeColors()
+mycolor.extend(themeColors)
+mycolor("yellow").themeColors()
 ```
 
 Will generate the following shades:
