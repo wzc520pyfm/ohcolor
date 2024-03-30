@@ -35,9 +35,8 @@ import { mycolor } from "ohcolor";
 import mycolor from "ohcolor";
 
 mycolor("#ff3399").rgba(); // [255, 51, 153, 1]
-mycolor("orange").rgba(); // [255, 165, 0, 1]
-mycolor("orange").alpha(0.5).rgba(); // [255, 165, 0, 0.5]
-mycolor("orange").format('string'); // rgba(255,165,0,1)
+mycolor("#ffa500").alpha(0.5).rgba(); // [255, 165, 0, 0.5]
+mycolor("#ffa500").format('string'); // rgba(255,165,0,1)
 ```
 
 All right, that's all ohcolor has to offer. It has simple functions and is small enough. But you can add plugins as needed to enrich ohcolor.
@@ -118,6 +117,18 @@ export default (option, ohcolorClass, ohcolorFactory) => {
 ```
 
 ## Plugins
+
+### inputNamed
+
+Support input w3cx11 color.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { inputNamed } from 'ohcolor/plugin'
+
+const mycolor2 = mycolor.extend(inputNamed)
+mycolor2("yellow").rgba() // [255, 255, 0, 1]
+```
 
 ### getLuminance
 

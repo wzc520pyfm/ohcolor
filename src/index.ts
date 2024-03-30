@@ -1,5 +1,4 @@
 import { inputHex } from "./plugin/inputHex";
-import { inputNamed } from "./plugin/inputNamed";
 import type {
   Alpha,
   ColorSpace,
@@ -185,7 +184,6 @@ mycolor.extend = <T>(plugin: MyColorPluginFn<T>, option?: any) => {
 
 // Install built-in plugins
 mycolor.extend(inputHex);
-mycolor.extend(inputNamed);
 
 type MyColorFn = typeof mycolor;
 
