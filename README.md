@@ -58,25 +58,18 @@ Feel free to open a pull request to share your plugin.
 Template of a Ohcolor plugin.
 
 ```ts
-import type { MyColorPlugin, MyColor, MyColorFn } from "ohcolor";
+import type { ColorPlugin } from "ohcolor";
+import "./type.d.ts"; // your plugin .d.ts
 
-interface OhColorClass extends MyColor {
-  isSame(): number; // your custom function
-}
-
-interface OhColorFactory extends MyColorFn {
-  (...args: unknown[]): OhColorClass;
-  isSame(): number; // your other custom function
-}
-export const yourPlugin: MyColorPlugin<OhColorFactory> = (option, ohcolorClass, ohcolorFactory) => {
+export const yourPlugin: ColorPlugin = (option, ohcolorClass, ohcolorFactory) => {
   // extend ohcolor()
   // e.g. add ohcolor().isSame()
-  const proto = ohcolorClass.prototype as OhColorClass;
+  const proto = ohcolorClass.prototype
   proto.isSameOrBefore = function(arguments) {}
 
   // extend ohcolor
   // e.g. add ohcolor.isSame()
-  const _ohcolorFactory = ohcolorFactory as OhColorFactory
+  const _ohcolorFactory = ohcolorFactory
   _ohcolorFactory.isSame = arguments => {}
 
   // overriding existing API
@@ -87,10 +80,21 @@ export const yourPlugin: MyColorPlugin<OhColorFactory> = (option, ohcolorClass, 
     const result = oldFormat.bind(this)(arguments)
     // return modified result
   }
-
-  // return factory
-  return _ohcolorFactory
 }
+```
+
+and your type.d.ts:
+
+```ts
+export {};
+
+declare module "ohcolor" {
+  interface MyColor {
+    /** your custom function. */
+    isSameOrBefore: () => boolean;
+  }
+}
+
 ```
 
 or use js:
