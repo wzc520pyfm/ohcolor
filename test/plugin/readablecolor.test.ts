@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest";
 import { readableColor } from "../../src/plugin";
-import { mycolor } from "ohcolor";
+import { mycolor } from "../../src/index";
 
 describe("mycolor plugin: readableColor", () => {
   it("should get black or white for best contrast depending on the luminosity.", () => {

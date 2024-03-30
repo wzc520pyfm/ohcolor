@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest";
 // eslint-disable-next-line import/no-named-as-default
-import mycolor from "ohcolor";
+import mycolor from "../src/index";
 
 describe("mycolor", () => {
   it("should get mycolor by default", async () => {
