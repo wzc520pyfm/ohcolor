@@ -39,6 +39,8 @@ export type ColorRGBA = { r: RGB_R; g: RGB_G; b: RGB_B; a: Alpha }; // should re
 export type StringColorRGB = string; // should recognize a css string with rgba format
 export type StringColorRGBA = string; // should recognize a css string with rgba format
 
+export type ColorHexString = string; // should recognize hexadecimal string, like #ff3399 and #F39
+
 // TODO: Prepare to support more color
 export type ColorHex = number; // should recognize hexadecimal numbers, only 0 ~ 16777215
 export type ColorNum = number; // should recognize any color space number
