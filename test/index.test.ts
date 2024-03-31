@@ -43,9 +43,10 @@ describe("mycolor", () => {
     expect(mycolor(255, 165, 0, 1).format("unknown")).toEqual([255, 165, 0, 1]);
   });
   it("allows multiple plugins to be installed", async () => {
-    const { inputHex, getLuminance, readableColor } = await import(
-      "../src/plugin"
-    );
+    const { inputHex } = await import("../src/plugin/inputHex");
+    const { getLuminance } = await import("../src/plugin/getLuminance");
+    const { readableColor } = await import("../src/plugin/readableColor");
+
     mycolor.extend(inputHex);
     mycolor.extend(getLuminance);
     mycolor.extend(readableColor);

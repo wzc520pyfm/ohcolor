@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest";
 import { mycolor } from "../../src";
-import { themeColors } from "../../src/plugin";
+import { themeColors } from "../../src/plugin/themeColors";
 
 describe("mycolor plugin: themeColors", () => {
   const fixture = {

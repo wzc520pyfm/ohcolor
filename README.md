@@ -127,8 +127,8 @@ export default (option, ohcolorClass, ohcolorFactory) => {
 Support input w3cx11 color.
 
 ```ts
-import { mycolor } from 'ohcolor'
-import { inputNamed } from 'ohcolor/plugin'
+import mycolor from 'ohcolor'
+import inputNamed from 'ohcolor/plugin/inputNamed'
 
 mycolor.extend(inputNamed)
 mycolor("yellow").rgba() // [255, 255, 0, 1]
@@ -140,7 +140,7 @@ Returns a number (float) representing the luminance of a color.
 
 ```ts
 import { mycolor } from 'ohcolor'
-import { getLuminance } from 'ohcolor/plugin'
+import { getLuminance } from 'ohcolor/plugin/getLuminance'
 
 mycolor.extend(getLuminance)
 mycolor("#ffff00").getLuminance() // 0.9278
@@ -152,7 +152,7 @@ Generate color shades for themes.
 
 ```ts
 import { mycolor } from 'ohcolor'
-import { themeColors } from 'ohcolor/plugin'
+import { themeColors } from 'ohcolor/plugin/themeColors'
 
 mycolor.extend(themeColors)
 mycolor("#ffff00").themeColors()
@@ -182,7 +182,7 @@ Get black or white for best contrast depending on the luminosity.
 
 ```ts
 import { mycolor } from 'ohcolor'
-import { readableColor } from 'ohcolor/plugin'
+import { readableColor } from 'ohcolor/plugin/readableColor'
 
 mycolor.extend(readableColor)
 mycolor("#ffff00").readableColor() // #000

@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest";
 import { mycolor } from "../../src";
-import { inputNamed } from "../../src/plugin";
+import { inputNamed } from "../../src/plugin/inputNamed";
 
 describe("mycolor plugin: inputNamed", () => {
   mycolor.extend(inputNamed);

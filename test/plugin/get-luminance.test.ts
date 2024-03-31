@@ -1,6 +1,6 @@
 import { expect, it, describe } from "vitest";
 import { mycolor } from "../../src";
-import { getLuminance } from "../../src/plugin";
+import { getLuminance } from "../../src/plugin/getLuminance";
 
 describe("mycolor plugin: getLuminance", () => {
   it("should get luminance", () => {

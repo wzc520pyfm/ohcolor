@@ -1,5 +1,5 @@
 import { expect, it, describe } from "vitest";
-import { readableColor } from "../../src/plugin";
+import { readableColor } from "../../src/plugin/readableColor";
 import { mycolor } from "../../src/index";
 
 describe("mycolor plugin: readableColor", () => {
