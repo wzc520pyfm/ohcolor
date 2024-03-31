@@ -143,7 +143,7 @@ import { mycolor } from 'ohcolor'
 import { getLuminance } from 'ohcolor/plugin'
 
 mycolor.extend(getLuminance)
-mycolor("yellow").getLuminance() // 0.9278
+mycolor("#ffff00").getLuminance() // 0.9278
 ```
 
 ### themeColors
@@ -155,7 +155,7 @@ import { mycolor } from 'ohcolor'
 import { themeColors } from 'ohcolor/plugin'
 
 mycolor.extend(themeColors)
-mycolor("yellow").themeColors()
+mycolor("#ffff00").themeColors()
 ```
 
 Will generate the following shades:
@@ -174,6 +174,19 @@ Will generate the following shades:
   "900": "#4D4D00",
   "950": "#333300",
 }
+```
+
+### readableColor
+
+Get black or white for best contrast depending on the luminosity.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { readableColor } from 'ohcolor/plugin'
+
+mycolor.extend(readableColor)
+mycolor("#ffff00").readableColor() // #000
+mycolor("#000").readableColor() // #fff
 ```
 
 ## Development
