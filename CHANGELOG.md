@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.0.6
+
+[compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.5...v0.0.6)
+
+### 🚀 Enhancements
+
+- No longer built-in parsing of w3cx11 color ([f035f12](https://github.com/wzc520pyfm/ohcolor/commit/f035f12))
+
+### 💅 Refactors
+
+- MyColor extends RGBAColor by default ([2e6e458](https://github.com/wzc520pyfm/ohcolor/commit/2e6e458))
+- Use declare to implement attr extended ([26d16fd](https://github.com/wzc520pyfm/ohcolor/commit/26d16fd))
+
+### 🏡 Chore
+
+- **release:** V0.0.5 ([2f473a8](https://github.com/wzc520pyfm/ohcolor/commit/2f473a8))
+- Update build badge to flat style ([7625eff](https://github.com/wzc520pyfm/ohcolor/commit/7625eff))
+- Apply automated fixes ([e18c76c](https://github.com/wzc520pyfm/ohcolor/commit/e18c76c))
+
+### ✅ Tests
+
+- **plugin:** [input-name]: add hex test ([52f7e3a](https://github.com/wzc520pyfm/ohcolor/commit/52f7e3a))
+- Fix coverage ([1c0b783](https://github.com/wzc520pyfm/ohcolor/commit/1c0b783))
+
+### ❤️ Contributors
+
+- Wzc520pyfm <1528857653@qq.com>
+
 ## v0.0.5
 
 [compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.4...v0.0.5)
