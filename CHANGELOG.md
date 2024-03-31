@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.6...v0.0.7)
+
+### 🚀 Enhancements
+
+- No longer fully export plug-ins to provide better ts types ([f9a62a1](https://github.com/wzc520pyfm/ohcolor/commit/f9a62a1))
+
+### 🏡 Chore
+
+- **release:** V0.0.6 ([dd20e7a](https://github.com/wzc520pyfm/ohcolor/commit/dd20e7a))
+
+### ✅ Tests
+
+- Add default format test ([5ea204f](https://github.com/wzc520pyfm/ohcolor/commit/5ea204f))
+
+### ❤️ Contributors
+
+- Wzc520pyfm <1528857653@qq.com>
+
 ## v0.0.6
 
 [compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.5...v0.0.6)
