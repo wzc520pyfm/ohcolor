@@ -39,6 +39,8 @@ describe("mycolor", () => {
     expect(mycolor(255, 165, 0, 1).format("string")).toEqual(
       "rgba(255,165,0,1)",
     );
+    // @ts-expect-error
+    expect(mycolor(255, 165, 0, 1).format("unknown")).toEqual([255, 165, 0, 1]);
   });
   it("allows multiple plugins to be installed", async () => {
     const { inputHex, getLuminance, readableColor } = await import(
