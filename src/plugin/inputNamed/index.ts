@@ -36,7 +36,7 @@ export const inputNamed: ColorPlugin = (_, c, mycolor) => {
 
   const oldParse = proto.parse;
   proto.parse = function (cfg: MyColorCfg) {
-    const color = parseColor.bind(this)(cfg);
+    const color = parseColor(cfg);
     const newCfg = { ...cfg, color };
     oldParse.bind(this)(newCfg as OColorCfg);
   };
