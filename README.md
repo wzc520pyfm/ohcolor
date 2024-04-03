@@ -189,6 +189,18 @@ mycolor("#ffff00").readableColor() // #000
 mycolor("#000").readableColor() // #fff
 ```
 
+### formatHex
+
+Extend format function to support formatting hex color string.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { formatHex } from 'ohcolor/plugin/formatHex'
+
+mycolor.extend(formatHex)
+mycolor(255, 165, 0, 1).format("hex") // #ffa500ff
+```
+
 ## Development
 
 - Clone this repository
