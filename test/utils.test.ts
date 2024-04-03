@@ -12,7 +12,7 @@ describe("utils test", () => {
     expect(U.o({ a: 666 })).toBeTruthy();
     expect(U.o(789)).toBeFalsy();
 
-    expect(U.s('hello')).toBeTruthy();
+    expect(U.s("hello")).toBeTruthy();
     expect(U.s(111)).toBeFalsy();
   });
 });
