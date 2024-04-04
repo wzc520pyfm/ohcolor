@@ -203,6 +203,18 @@ mycolor.extend(formatHex)
 mycolor(255, 165, 0, 1).format("hex") // #ffa500ff
 ```
 
+### formatDec
+
+Extend format function to support formatting to get decimal number color.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { formatDec } from 'ohcolor/plugin/formatDec'
+
+mycolor.extend(formatDec)
+mycolor(46, 139, 87, 0.6).format("dec") // 780_883_865
+```
+
 ### outputHex
 
 Support output hexadecimal color string.
