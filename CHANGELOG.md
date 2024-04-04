@@ -1,6 +1,41 @@
 # Changelog
 
 
+## v0.0.8
+
+[compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.7...v0.0.8)
+
+### 🚀 Enhancements
+
+- Deprecate rgba func ([bf2ed76](https://github.com/wzc520pyfm/ohcolor/commit/bf2ed76))
+- **util:** Add more func for check type ([d26a73d](https://github.com/wzc520pyfm/ohcolor/commit/d26a73d))
+- **plugin:** Add format-hex plugin ([cd08c33](https://github.com/wzc520pyfm/ohcolor/commit/cd08c33))
+- Rgba func is no longer deprecated ([9a78187](https://github.com/wzc520pyfm/ohcolor/commit/9a78187))
+- **plugin:** Add output-hex ([6c941bd](https://github.com/wzc520pyfm/ohcolor/commit/6c941bd))
+- **plugin:** Add format-dec ([b6ee522](https://github.com/wzc520pyfm/ohcolor/commit/b6ee522))
+- **plugin:** Add output-gl ([0341171](https://github.com/wzc520pyfm/ohcolor/commit/0341171))
+- Add setter for rgba ([10029d0](https://github.com/wzc520pyfm/ohcolor/commit/10029d0))
+- **plugin:** Add getter for rgba ([d1baaf2](https://github.com/wzc520pyfm/ohcolor/commit/d1baaf2))
+
+### 🏡 Chore
+
+- **release:** V0.0.7 ([c9693b3](https://github.com/wzc520pyfm/ohcolor/commit/c9693b3))
+- **plugin:** [input-named] remove useless bind ([500ee31](https://github.com/wzc520pyfm/ohcolor/commit/500ee31))
+- Apply automated fixes ([00eae3d](https://github.com/wzc520pyfm/ohcolor/commit/00eae3d))
+- Change rgba description ([d0bdaca](https://github.com/wzc520pyfm/ohcolor/commit/d0bdaca))
+- **plugin:** [format-hex] format code ([0cfb62d](https://github.com/wzc520pyfm/ohcolor/commit/0cfb62d))
+- Add rgba in color space ([761fb0d](https://github.com/wzc520pyfm/ohcolor/commit/761fb0d))
+- **plugin:** [format-hex] update comment ([8548af6](https://github.com/wzc520pyfm/ohcolor/commit/8548af6))
+- **plugin:** [format-hex] update comment ([de717e7](https://github.com/wzc520pyfm/ohcolor/commit/de717e7))
+
+### ✅ Tests
+
+- Add utils test ([4928aca](https://github.com/wzc520pyfm/ohcolor/commit/4928aca))
+
+### ❤️ Contributors
+
+- Wzc520pyfm <1528857653@qq.com>
+
 ## v0.0.7
 
 [compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.6...v0.0.7)
