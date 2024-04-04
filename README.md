@@ -39,6 +39,7 @@ import mycolor from "ohcolor";
 mycolor("#ff3399").rgba(); // [255, 51, 153, 1]
 mycolor("#ffa500").alpha(0.5).rgba(); // [255, 165, 0, 0.5]
 mycolor("#ffa500").format('string'); // rgba(255,165,0,1)
+mycolor("#ffa500").format('object'); // { r: 255, g: 165, b: 0, a: 1 }
 ```
 
 All right, that's all ohcolor has to offer. It has simple functions and is small enough. But you can add plugins as needed to enrich ohcolor.
