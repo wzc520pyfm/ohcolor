@@ -203,6 +203,18 @@ mycolor.extend(formatHex)
 mycolor(255, 165, 0, 1).format("hex") // #ffa500ff
 ```
 
+### outputHex
+
+Support output hexadecimal color string.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { outputHex } from 'ohcolor/plugin/outputHex'
+
+mycolor.extend(outputHex)
+mycolor(255, 165, 0, 1).hex() // #ffa500ff
+```
+
 ## Development
 
 - Clone this repository
