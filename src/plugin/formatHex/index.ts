@@ -20,7 +20,7 @@ const rgba2hex = (r: RGB_R, g: RGB_G, b: RGB_B, a: Alpha) => {
 };
 
 /**
- * Plugin: extend format function to support formatting hex color string.
+ * Plugin: extend format function to support formatting to get hex color string.
  */
 export const formatHex: ColorPlugin = (_, c) => {
   const proto = c.prototype;
