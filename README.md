@@ -193,7 +193,7 @@ mycolor("#000").readableColor() // #fff
 
 ### formatHex
 
-Extend format function to support formatting hex color string.
+Extend format function to support formatting to get hex color string.
 
 ```ts
 import { mycolor } from 'ohcolor'
