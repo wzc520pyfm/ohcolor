@@ -4,7 +4,7 @@ export {};
 
 declare module "ohcolor" {
   interface MyColor {
-    /** Override format with hex prop. */
+    /** Override format: Support formatting to get color with hex string. */
     format<T extends "hex" = "hex", R = StringColorRGBA>(f: T): R;
   }
 }
