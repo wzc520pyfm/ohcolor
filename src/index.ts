@@ -96,7 +96,7 @@ abstract class Color<CS extends ColorSpace> {
 }
 
 interface RGBA<CS extends Extract<ColorSpace, "rgb"> = "rgb"> {
-  /** @description get rgba array */
+  /** @description Get rgba array by standard methods */
   rgba(): TColorRGBA;
   alpha(a: Alpha): Color<CS>;
 }
