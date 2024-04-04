@@ -16,7 +16,7 @@ const IS_MYCOLOR = "$isMyColorObject";
 const isMyColor = (c: any) => c instanceof Color || !!(c && c[IS_MYCOLOR]);
 
 // Only r,g,b,a params is supported by default, unless you use a plugin
-const mycolor = function <CS extends Extract<ColorSpace, "rgb"> = "rgb">(
+const mycolor = function <CS extends Extract<ColorSpace, "rgba"> = "rgba">(
   ...args: unknown[]
 ): RGBAColor {
   // Immutable data, return the cloned value.
@@ -45,11 +45,11 @@ const Utils = {
   w: wrapper,
 };
 
-type MaybeCfg<CS extends ColorSpace = "rgb"> = Cfg<CS> & {
+type MaybeCfg<CS extends ColorSpace = "rgba"> = Cfg<CS> & {
   color: unknown;
 };
 
-const parseColor = <CS extends Extract<ColorSpace, "rgb"> = "rgb">(
+const parseColor = <CS extends Extract<ColorSpace, "rgba"> = "rgba">(
   cfg: MaybeCfg<CS>,
 ): InputColor<CS> => {
   const { color } = cfg;
@@ -95,13 +95,13 @@ abstract class Color<CS extends ColorSpace> {
   abstract format<T extends Format = Format>(f: T): FormatResult<CS>[T];
 }
 
-interface RGBA<CS extends Extract<ColorSpace, "rgb"> = "rgb"> {
+interface RGBA<CS extends Extract<ColorSpace, "rgba"> = "rgba"> {
   /** @description Get rgba array by standard methods */
   rgba(): TColorRGBA;
   alpha(a: Alpha): Color<CS>;
 }
 
-class RGBAColor<CS extends Extract<ColorSpace, "rgb"> = "rgb">
+class RGBAColor<CS extends Extract<ColorSpace, "rgba"> = "rgba">
   extends Color<CS>
   implements RGBA
 {

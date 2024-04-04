@@ -1,5 +1,6 @@
 export type ColorSpace =
-  | "rgb" // maybe should changed to "rgba" ?
+  | "rgb"
+  | "rgba"
   | "hsl"
   | "hsv"
   | "hwb"
@@ -36,8 +37,10 @@ export type TColorRGB = [RGB_R, RGB_G, RGB_B]; // should recognize an array of t
 export type TColorRGBA = [RGB_R, RGB_G, RGB_B, Alpha]; // should recognize an array of three numbers
 export type ColorRGB = { r: RGB_R; g: RGB_G; b: RGB_B }; // should recognize an object with three properties, each property is 0 ~ 255
 export type ColorRGBA = { r: RGB_R; g: RGB_G; b: RGB_B; a: Alpha }; // should recognize an object with three properties
-export type StringColorRGB = string; // should recognize a css string with rgba format
+export type StringColorRGB = string; // should recognize a css string with rgb format
 export type StringColorRGBA = string; // should recognize a css string with rgba format
+export type DecimalColorRGB = number; // should recognize a decimal number with rgb format, like 255
+export type DecimalColorRGBA = number; // should recognize a decimal number with rgba format, like 255
 
 export type ColorHexString = string; // should recognize hexadecimal string, like #ff3399 and #F39
 
