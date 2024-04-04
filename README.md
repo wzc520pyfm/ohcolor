@@ -9,6 +9,8 @@
 
 🎨 ohcolor is a moden, expandable immutable color library.
 
+WIP: The project is currently under intensive development and its API may undergo breaking changes. A stable API is expected to be available starting from 0.1.0.
+
 ## Usage
 
 Install package:
