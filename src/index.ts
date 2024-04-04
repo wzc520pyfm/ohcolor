@@ -98,6 +98,9 @@ abstract class Color<CS extends ColorSpace> {
 interface RGBA<CS extends Extract<ColorSpace, "rgba"> = "rgba"> {
   /** @description Get rgba array by standard methods */
   rgba(): TColorRGBA;
+  red(r: RGB_R): Color<CS>;
+  green(g: RGB_G): Color<CS>;
+  blue(b: RGB_B): Color<CS>;
   alpha(a: Alpha): Color<CS>;
 }
 
@@ -155,6 +158,18 @@ class RGBAColor<CS extends Extract<ColorSpace, "rgba"> = "rgba">
 
   rgba(): TColorRGBA {
     return [this.r, this.g, this.b, this.a];
+  }
+
+  red(r: number): RGBAColor<CS> {
+    return Utils.w(r, this.g, this.b, this.a);
+  }
+
+  green(g: number): RGBAColor<CS> {
+    return Utils.w(this.r, g, this.b, this.a);
+  }
+
+  blue(b: number): RGBAColor<CS> {
+    return Utils.w(this.r, this.g, b, this.a);
   }
 
   alpha(a: number): RGBAColor<CS> {

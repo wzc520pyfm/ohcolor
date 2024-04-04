@@ -23,7 +23,14 @@ describe("mycolor", () => {
   it("input rgba params, should get a rgba array", () => {
     expect(mycolor(255, 165, 0, 1).rgba()).toEqual([255, 165, 0, 1]);
   });
-  it("input rgba params, set alpha", () => {
+  it("input rgba params, set red, green, blue and alpha", () => {
+    const color1 = mycolor(255, 165, 0, 1);
+    const color2 = color1.alpha(0.1);
+    expect(color1).not.toEqual(color2);
+
+    expect(mycolor(255, 165, 0, 1).red(133).rgba()).toEqual([133, 165, 0, 1]);
+    expect(mycolor(255, 165, 0, 1).green(34).rgba()).toEqual([255, 34, 0, 1]);
+    expect(mycolor(255, 165, 0, 1).blue(99).rgba()).toEqual([255, 165, 99, 1]);
     expect(mycolor(255, 165, 0, 1).alpha(0.5).rgba()).toEqual([
       255, 165, 0, 0.5,
     ]);
