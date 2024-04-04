@@ -227,6 +227,18 @@ mycolor.extend(outputHex)
 mycolor(255, 165, 0, 1).hex() // #ffa500ff
 ```
 
+### outputGl
+
+Get rgba array, but in the channel range of 0 ~ 1 instead of 0 ~ 255.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { outputGl } from 'ohcolor/plugin/outputGl'
+
+mycolor.extend(outputGl)
+mycolor(51, 204, 0, 1).gl() // [0.2, 0.8, 0, 1]
+```
+
 ## Development
 
 - Clone this repository

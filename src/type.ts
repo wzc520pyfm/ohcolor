@@ -41,6 +41,10 @@ export type StringColorRGB = string; // should recognize a css string with rgb f
 export type StringColorRGBA = string; // should recognize a css string with rgba format
 export type DecimalColorRGB = number; // should recognize a decimal number with rgb format, like 255
 export type DecimalColorRGBA = number; // should recognize a decimal number with rgba format, like 255
+export type Gl_RGB_R = number; // should recognize red channel, only 0 ~ 1
+export type Gl_RGB_G = number; // should recognize green channel, only 0 ~ 1
+export type Gl_RGB_B = number; // should recognize blue channel, only 0 ~ 1
+export type GlColorRGBA = [Gl_RGB_R, Gl_RGB_G, Gl_RGB_B, Alpha]; // should recognize an array of four numbers, each number is 0 ~ 1
 
 export type ColorHexString = string; // should recognize hexadecimal string, like #ff3399 and #F39
 
