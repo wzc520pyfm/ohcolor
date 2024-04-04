@@ -71,7 +71,7 @@ export const yourPlugin: ColorPlugin = (option, ohcolorClass, ohcolorFactory) =>
   // extend ohcolor()
   // e.g. add ohcolor().isSame()
   const proto = ohcolorClass.prototype
-  proto.isSameOrBefore = function(arguments) {}
+  proto.isSame = function(arguments) {}
 
   // extend ohcolor
   // e.g. add ohcolor.isSame()
@@ -97,7 +97,7 @@ export {};
 declare module "ohcolor" {
   interface MyColor {
     /** your custom function. */
-    isSameOrBefore: () => boolean;
+    isSame: () => boolean;
   }
 }
 
@@ -108,12 +108,12 @@ or use js:
 ```js
 export default (option, ohcolorClass, ohcolorFactory) => {
   // extend ohcolor()
-  // e.g. add ohcolor().isSameOrBefore()
-  ohcolorClass.prototype.isSameOrBefore = function(arguments) {}
+  // e.g. add ohcolor().isSame()
+  ohcolorClass.prototype.isSame = function(arguments) {}
 
   // extend ohcolor
-  // e.g. add ohcolor.utc()
-  ohcolorFactory.utc = arguments => {}
+  // e.g. add ohcolor.isSame()
+  ohcolorFactory.isSame = arguments => {}
 
   // overriding existing API
   // e.g. extend ohcolor().format()
