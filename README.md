@@ -243,6 +243,23 @@ mycolor.extend(outputGl)
 mycolor(51, 204, 0, 1).gl() // [0.2, 0.8, 0, 1]
 ```
 
+### getter
+
+Getters for rgba.
+
+```ts
+import { mycolor } from 'ohcolor'
+import { getter } from 'ohcolor/plugin/getter'
+
+mycolor.extend(getter)
+
+const color = mycolor(255, 135, 0, 1);
+color.getR() // 255
+color.getG() // 135
+color.getB() // 0
+color.getA() // 1
+```
+
 ## Development
 
 - Clone this repository
