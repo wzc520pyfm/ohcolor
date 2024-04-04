@@ -9,10 +9,11 @@ const rgba2hex = (r: RGB_R, g: RGB_G, b: RGB_B, a: Alpha) => {
   const _r = round(r);
   const _g = round(g);
   const _b = round(b);
+  const _a = round(a * 255);
   const u = (_r << 16) | (_g << 8) | _b;
   let str = "000000" + u.toString(16); // #.toUpperCase();
   str = str.slice(-6);
-  let hxa = "0" + round(a * 255).toString(16);
+  let hxa = "0" + _a.toString(16);
   hxa = hxa.slice(-2);
 
   return `#${str}${hxa}`;
