@@ -21,6 +21,7 @@ describe("mycolor", () => {
     expect(color1).not.toBe(color2);
   });
   it("input rgba params, should get a rgba array", () => {
+    expect(mycolor(255, 165, 0).rgba()).toEqual([255, 165, 0, 1]);
     expect(mycolor(255, 165, 0, 1).rgba()).toEqual([255, 165, 0, 1]);
   });
   it("input rgba params, set red, green, blue and alpha", () => {
