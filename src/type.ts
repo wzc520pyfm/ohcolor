@@ -10,7 +10,7 @@ export type ColorSpace =
   | "lch"
   | "hex"
   | "keyword";
-export type Format = "object" | "array" | "string";
+export type Format = "object" | "array" | "string" | "css";
 export type FormatResult<T extends ColorSpace> = {
   [key in Format]: key extends "object"
     ? ColorObject<T>
@@ -18,7 +18,9 @@ export type FormatResult<T extends ColorSpace> = {
       ? ColorArray<T>
       : key extends "string"
         ? ColorString<T>
-        : never;
+        : key extends "css"
+          ? ColorCSS<T>
+          : never;
 };
 export type ColorObject<T extends ColorSpace> = T extends "rgb"
   ? ColorRGBA
@@ -28,6 +30,9 @@ export type ColorArray<T extends ColorSpace> = T extends "rgb"
   : never;
 export type ColorString<T extends ColorSpace> = T extends "rgb"
   ? StringColorRGBA
+  : never;
+export type ColorCSS<T extends ColorSpace> = T extends "rgb"
+  ? CssColorRGB
   : never;
 export type RGB_R = number; // should recognize red channel, only 0 ~ 255
 export type RGB_G = number; // should recognize green channel, only 0 ~ 255
@@ -41,6 +46,7 @@ export type StringColorRGB = string; // should recognize a css string with rgb f
 export type StringColorRGBA = string; // should recognize a css string with rgba format
 export type DecimalColorRGB = number; // should recognize a decimal number with rgb format, like 255
 export type DecimalColorRGBA = number; // should recognize a decimal number with rgba format, like 255
+export type CssColorRGB = string; // should recognize a css string with rgb(a) format
 export type Gl_RGB_R = number; // should recognize red channel, only 0 ~ 1
 export type Gl_RGB_G = number; // should recognize green channel, only 0 ~ 1
 export type Gl_RGB_B = number; // should recognize blue channel, only 0 ~ 1

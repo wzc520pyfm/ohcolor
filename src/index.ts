@@ -150,6 +150,10 @@ class RGBAColor<CS extends Extract<ColorSpace, "rgba"> = "rgba">
       case "string": {
         return `rgba(${this.r},${this.g},${this.b},${this.a})` as R;
       }
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+      case "css": {
+        return `rgb(${this.r} ${this.g} ${this.b} / ${this.a})` as R;
+      }
       default: {
         return [this.r, this.g, this.b, this.a] as R;
       }

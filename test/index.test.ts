@@ -46,6 +46,9 @@ describe("mycolor", () => {
     expect(mycolor(255, 165, 0, 1).format("string")).toEqual(
       "rgba(255,165,0,1)",
     );
+    expect(mycolor(255, 165, 0, 1).format("css")).toEqual(
+      "rgb(255 165 0 / 1)",
+    );
     // @ts-expect-error
     expect(mycolor(255, 165, 0, 1).format("unknown")).toEqual([255, 165, 0, 1]);
   });
