@@ -1,10 +1,10 @@
-import { GlColorRGBA } from "../../type";
+import { GlColorRGB } from "../../type";
 
 export {};
 
 declare module "ohcolor" {
   interface MyColor {
     /** Returns the luminance of the color. */
-    gl: () => GlColorRGBA;
+    gl: () => GlColorRGB;
   }
 }
