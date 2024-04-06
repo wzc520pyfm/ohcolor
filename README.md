@@ -42,6 +42,7 @@ mycolor(255, 165, 0, 1).green(34).rgba(); // [255, 34, 0, 1]
 mycolor(255, 165, 0, 1).blue(99).rgba(); // [255, 165, 99, 1]
 mycolor(255, 165, 0, 1).alpha(0.5).rgba(); // [255, 165, 0, 0.5]
 mycolor("#ffa500").format('string'); // rgba(255,165,0,1)
+mycolor("#ffa500").format('css'); // rgba(255 165 0 / 1)
 mycolor("#ffa500").format('object'); // { r: 255, g: 165, b: 0, a: 1 }
 ```
 
