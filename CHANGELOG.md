@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.0.9
+
+[compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.8...v0.0.9)
+
+### 🚀 Enhancements
+
+- Support format to css string ([6abb1a8](https://github.com/wzc520pyfm/ohcolor/commit/6abb1a8))
+- Support getter when no prop ([99c2034](https://github.com/wzc520pyfm/ohcolor/commit/99c2034))
+
+### 🩹 Fixes
+
+- **plugin:** Fix type error ([e0e84af](https://github.com/wzc520pyfm/ohcolor/commit/e0e84af))
+
+### 💅 Refactors
+
+- Use rgb instead rgba  - see: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb ([65112c2](https://github.com/wzc520pyfm/ohcolor/commit/65112c2))
+
+### 🏡 Chore
+
+- **release:** V0.0.8 ([f9983c3](https://github.com/wzc520pyfm/ohcolor/commit/f9983c3))
+- Apply automated fixes ([f394a2b](https://github.com/wzc520pyfm/ohcolor/commit/f394a2b))
+
+### ❤️ Contributors
+
+- Wzc520pyfm ([@wzc520pyfm](http://github.com/wzc520pyfm))
+
 ## v0.0.8
 
 [compare changes](https://github.com/wzc520pyfm/ohcolor/compare/v0.0.7...v0.0.8)
