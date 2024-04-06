@@ -37,6 +37,7 @@ import { mycolor } from "ohcolor";
 import mycolor from "ohcolor";
 
 mycolor("#ff3399").rgba(); // [255, 51, 153, 1]
+mycolor("#ff3399").red(); // 255
 mycolor(255, 165, 0, 1).red(133).rgba(); // [133, 165, 0, 1]
 mycolor(255, 165, 0, 1).green(34).rgba(); // [255, 34, 0, 1]
 mycolor(255, 165, 0, 1).blue(99).rgba(); // [255, 165, 99, 1]

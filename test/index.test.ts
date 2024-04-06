@@ -29,6 +29,11 @@ describe("mycolor", () => {
     const color2 = color1.alpha(0.1);
     expect(color1).not.toEqual(color2);
 
+    expect(mycolor(255, 165, 0, 1).red()).toEqual(255);
+    expect(mycolor(255, 165, 0, 1).green()).toEqual(165);
+    expect(mycolor(255, 165, 0, 1).blue()).toEqual(0);
+    expect(mycolor(255, 165, 0, 1).alpha()).toEqual(1);
+
     expect(mycolor(255, 165, 0, 1).red(133).rgba()).toEqual([133, 165, 0, 1]);
     expect(mycolor(255, 165, 0, 1).green(34).rgba()).toEqual([255, 34, 0, 1]);
     expect(mycolor(255, 165, 0, 1).blue(99).rgba()).toEqual([255, 165, 99, 1]);

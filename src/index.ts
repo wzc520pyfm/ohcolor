@@ -104,9 +104,13 @@ abstract class Color<CS extends ColorSpace> {
 interface RGB<CS extends Extract<ColorSpace, "rgb"> = "rgb"> {
   /** @description Get rgba array by standard methods */
   rgba(): TColorRGB;
+  red(): RGB_R;
   red(r: RGB_R): Color<CS>;
+  green(): RGB_G;
   green(g: RGB_G): Color<CS>;
+  blue(): RGB_B;
   blue(b: RGB_B): Color<CS>;
+  alpha(): Alpha;
   alpha(a: Alpha): Color<CS>;
 }
 
@@ -170,19 +174,39 @@ class RGBColor<CS extends Extract<ColorSpace, "rgb"> = "rgb">
     return [this.r, this.g, this.b, this.a];
   }
 
-  red(r: number): RGBColor<CS> {
+  red(): RGB_R;
+  red(r: RGB_R): RGBColor<CS>;
+  red(r?: RGB_R): RGB_R | RGBColor<CS> {
+    if (U.u(r)) {
+      return this.r;
+    }
     return Utils.w(r, this.g, this.b, this.a);
   }
 
-  green(g: number): RGBColor<CS> {
+  green(): RGB_G;
+  green(g: RGB_G): RGBColor<CS>;
+  green(g?: RGB_G): RGB_G | RGBColor<CS> {
+    if (U.u(g)) {
+      return this.g;
+    }
     return Utils.w(this.r, g, this.b, this.a);
   }
 
-  blue(b: number): RGBColor<CS> {
+  blue(): RGB_B;
+  blue(b: RGB_B): RGBColor<CS>;
+  blue(b?: RGB_B): RGB_B | RGBColor<CS> {
+    if (U.u(b)) {
+      return this.b;
+    }
     return Utils.w(this.r, this.g, b, this.a);
   }
 
-  alpha(a: number): RGBColor<CS> {
+  alpha(): Alpha;
+  alpha(a: Alpha): RGBColor<CS>;
+  alpha(a?: Alpha): Alpha | RGBColor<CS> {
+    if (U.u(a)) {
+      return this.a;
+    }
     return Utils.w(this.r, this.g, this.b, a);
   }
 }
